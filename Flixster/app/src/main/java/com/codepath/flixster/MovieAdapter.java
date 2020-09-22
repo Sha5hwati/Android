@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.codepath.flixster.models.GlideApp;
 import com.codepath.flixster.models.Movie;
 
 import java.util.List;
@@ -40,7 +41,7 @@ public class MovieAdapter extends  RecyclerView.Adapter<MovieAdapter.ViewHolder>
     // Involves populating data into the item through holder
     public void onBindViewHolder(MovieAdapter.ViewHolder holder, int position) {
         Movie movie = this.movieList.get(position);
-
+        GlideApp.with(context).load(movie.getPosterPath()).into(holder.movie_poster);
         holder.movie_title.setText(movie.getTitle());
         holder.movie_overview.setText(movie.getOverview());
     }

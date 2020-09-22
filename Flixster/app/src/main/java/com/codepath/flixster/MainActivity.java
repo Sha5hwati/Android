@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(int statusCode, Headers headers, String errorResponse, Throwable t) {
-                        Log.d(TAG, "onFailure");
+                        Log.e(TAG, "onFailure", t);
                     }
                 }
         );
