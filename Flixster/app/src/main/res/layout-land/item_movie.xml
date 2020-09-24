@@ -9,17 +9,18 @@
 
     <ImageView
         android:id="@+id/image"
-        android:src="@drawable/place_holder"
-        android:layout_width="150dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:maxHeight="200dp"
         android:layout_centerVertical="true"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"/>
 
     <TextView
         android:id="@+id/title"
-        android:textColor="@color/textColor"
         android:text="Movie Name"
+        android:textColor="@color/textColor"
         android:textStyle="bold"
         android:textSize="10pt"
         android:layout_toEndOf="@id/image"
@@ -30,13 +31,13 @@
 
     <TextView
         android:id="@+id/overview"
-        android:textColor="@color/textColor"
         android:text="This is the best movie everrr!"
         android:layout_toEndOf="@id/image"
         android:layout_below="@id/title"
+        android:textColor="@color/textColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"/>
-    
+
 </RelativeLayout>

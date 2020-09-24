@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.codepath.flixster.adapter.MovieAdapter;
 import com.codepath.flixster.models.Movie;
 
 import org.json.JSONArray;
@@ -41,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
         // Attach the adapter to the recyclerview to populate items
         rvMovies.setAdapter(adapter);
         // Set layout manager to position the items
-        rvMovies.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        rvMovies.setLayoutManager(linearLayoutManager);
 
         getNowPlayingMovies();
         Log.i(TAG, "Movies " + movies.size());
