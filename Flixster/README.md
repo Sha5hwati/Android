@@ -11,10 +11,11 @@ Flixster is an app that allows users to browse movies from the [The Movie Databa
 - [x] Display a nice default placeholder graphic for each image during loading.
 - [x] Improved the user interface by experimenting with styling and coloring.
 - [x] For popular movies (i.e. a movie with more than 7 average vote), the full backdrop image is displayed. Otherwise, a poster image, the movie title, and overview is listed.
+- [x] Added an app icon
 
 # App Walkthough GIF
 
-<img src="" width=250><br>
+<img src="./video-walthrough-portrait.gif" width=350 height=450> <img src="./video-walthrough-landscape.gif" width=450 height=230><br>
  
 # Open-source libraries used
 
