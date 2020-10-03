@@ -17,7 +17,8 @@ public class MovieAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private Context context;
     private List<Movie> movieList;
-    private final int MAIN = 0, BACKDROP = 1;
+    private static final int MAIN = 0, BACKDROP = 1;
+    private static final float HIGH_RATING = 7;
 
     public MovieAdapter(Context context, List<Movie> movieList) {
         this.context = context;
@@ -26,8 +27,8 @@ public class MovieAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public int getItemViewType(int position) {
-        Float rating = Float.parseFloat(movieList.get(position).getRating());
-        if(rating > 7)
+        Float rating = movieList.get(position).getRating();
+        if(rating > HIGH_RATING)
             return BACKDROP;
         return MAIN;
     }

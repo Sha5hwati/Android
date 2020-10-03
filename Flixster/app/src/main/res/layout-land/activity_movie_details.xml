@@ -1,65 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorAccent"
-    android:padding="10dp">
-
-    <com.google.android.youtube.player.YouTubePlayerView
-        android:id="@+id/movie_detail_preview"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent"
+        android:padding="10dp">
 
-    <TextView
-        android:id="@+id/movie_detail_title"
-        android:text="Movie Title"
-        android:transitionName="transitionTitle"
-        android:textStyle="bold"
-        android:textSize="10pt"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/textColor"
-        android:layout_below="@id/movie_detail_preview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <RatingBar
-        android:id="@+id/movie_detail_ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/movie_detail_title"
-        style="@style/MyRatingBar"
-        android:clickable="false"
-        android:numStars="10"
-        android:progressTint="#FFFFFF"
-        android:rating="5.5" />
-
-    <TextView
-        android:id="@+id/movie_detail_popularity"
-        android:layout_below="@id/movie_detail_ratingBar"
-        android:text="Popularity: 2.4"
-        android:textStyle="bold"
-        android:textColor="@color/textColor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/movie_detail_releaseDate"
-        android:layout_below="@id/movie_detail_popularity"
-        android:text="Release Date: 28th Sept 2020"
-        android:textStyle="bold"
-        android:textColor="@color/textColor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/movie_detail_overview"
-        android:text="The best movie eveerrr!"
-        android:textColor="@color/textColor"
-        android:layout_marginTop="8dp"
-        android:layout_below="@id/movie_detail_releaseDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-</RelativeLayout>
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/movie_detail_preview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+</layout>

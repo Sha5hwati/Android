@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="actionBarSize">70dp</item>
         <item name="actionBarStyle">@style/MyActionBar</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">

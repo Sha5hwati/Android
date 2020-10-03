@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Flixster</string>
     <string name="app_subtitle">Movies Now Playing in Theaters</string>
+    <string name="test_title">Movie Title</string>
+    <string name="test_overview">Best movie eveerrrr!</string>
+    <string name="contentDescription">Poster</string>
 </resources>

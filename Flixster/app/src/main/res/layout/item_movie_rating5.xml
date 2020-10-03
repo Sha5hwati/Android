@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -8,10 +8,18 @@
 
     <ImageView
         android:id="@+id/backdropImage"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/place_holder"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_centerVertical="true"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY"
+        android:contentDescription="@string/contentDescription" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:src="@drawable/play_icon"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        tools:ignore="ContentDescription" />
 </RelativeLayout>

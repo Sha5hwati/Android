@@ -1,5 +1,8 @@
 package com.codepath.flixster.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -7,14 +10,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Movie {
+public class Movie implements Parcelable {
     private String id;
     private String title;
     private String overview;
     private String posterPath;
     private String backdropPath;
-    private String rating;
-    private Double popularity;
+    private Float rating;
+    private String popularity;
     private String releaseDate;
 
     public Movie(JSONObject jsonObject) throws JSONException {
@@ -23,10 +26,34 @@ public class Movie {
         title = jsonObject.getString("title");
         overview = jsonObject.getString("overview");
         backdropPath = jsonObject.getString("backdrop_path");
-        rating = jsonObject.getString("vote_average");
-        popularity = jsonObject.getDouble("popularity");
-        releaseDate = jsonObject.getString("release_date");
+        rating = (float) jsonObject.getDouble("vote_average");
+        popularity = "Popularity: " + jsonObject.getString("popularity");
+        releaseDate = "Release date: " + jsonObject.getString("release_date");
     }
+
+    protected Movie(Parcel in) {
+        id = in.readString();
+        title = in.readString();
+        overview = in.readString();
+        posterPath = in.readString();
+        backdropPath = in.readString();
+        rating = in.readFloat();
+        popularity = in.readString();
+        releaseDate = in.readString();
+    }
+
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
+
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
         List<Movie> movies = new ArrayList<>();
         for(int i=0; i<movieJsonArray.length(); i++){
@@ -47,9 +74,9 @@ public class Movie {
         return overview;
     }
 
-    public String getRating() { return rating; }
+    public Float getRating() { return rating; }
 
-    public Double getPopularity() {
+    public String getPopularity() {
         return popularity;
     }
 
@@ -65,5 +92,22 @@ public class Movie {
     public String getBackdropPath() {
         // TODO: Make a call to the Image API to get the size
         return String.format("https://image.tmdb.org/t/p/w342/%s", backdropPath);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(title);
+        dest.writeString(overview);
+        dest.writeString(posterPath);
+        dest.writeString(backdropPath);
+        dest.writeFloat(rating);
+        dest.writeString(popularity);
+        dest.writeString(releaseDate);
     }
 }
