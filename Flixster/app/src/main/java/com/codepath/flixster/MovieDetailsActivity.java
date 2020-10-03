@@ -39,9 +39,11 @@ public class MovieDetailsActivity extends YouTubeBaseActivity {
         Intent i = getIntent();
         Movie movie = (Movie) getIntent().getParcelableExtra("movie");
         movieBinding.setMovie(movie);
-        movieBinding.movieDetailRatingBar.setRating(movie.getRating());
         youTubePlayerView = movieBinding.movieDetailPreview;
-        getYouTubeVideoKey(movie.getId(), movie.getRating());
+        float rating = 0;
+        if(movie.getRating() != null)
+            rating = movie.getRating();
+        getYouTubeVideoKey(movie.getId(), rating);
     }
 
     private void getYouTubeVideoKey(String id, final float rating){
