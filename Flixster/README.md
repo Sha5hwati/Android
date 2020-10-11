@@ -1,5 +1,5 @@
 # Flixster
-Flixster is an app that allows users to browse movies from the [The Movie Database API](http://docs.themoviedb.apiary.io/#). The app uses the heterogeneous RecyclerView to display the movies playing in the theaters now.
+Flixster is an app that allows users to browse movies from the [The Movie Database API](http://docs.themoviedb.apiary.io/#). The app uses the heterogeneous RecyclerView to display the movies playing in the theaters now. On clicking the movie, you can get more details and the trailer in a seperate activity.
 
 ## Checkpoint 2
 
