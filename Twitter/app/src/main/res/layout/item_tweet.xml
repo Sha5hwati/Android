@@ -24,7 +24,7 @@
         android:textStyle="bold"
         android:textSize="7pt"
         android:layout_marginRight="5dp"
-        android:layout_toRightOf="@id/profilePic" />
+        android:layout_toEndOf="@id/profilePic" />
 
     <TextView
         android:id="@+id/username"

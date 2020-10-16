@@ -3,16 +3,21 @@ package com.codepath.apps.twitter.models;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Parcel
 public class Tweet {
 
-    private String content;
-    private String createdAt;
-    private User user;
-    private String url;
+    public String content;
+    public String createdAt;
+    public User user;
+    public String url;
+
+    public Tweet(){}
+
 
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
         Tweet tweet = new Tweet();
