@@ -8,11 +8,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -20,6 +22,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
+    private Button btnSignup;
+    private ProgressBar pbSignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.username);
         etPassword = findViewById(R.id.password);
         btnLogin = findViewById(R.id.login);
+        btnSignup = findViewById(R.id.signup);
+        pbSignup = findViewById(R.id.pb_signup);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +47,25 @@ public class LoginActivity extends AppCompatActivity {
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
                 loginUser(username, password);
+            }
+        });
+
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "onClick login button");
+                String username = etUsername.getText().toString();
+                String password = etPassword.getText().toString();
+                if(username.isEmpty()){
+                    Toast.makeText(LoginActivity.this, "Username cannot be empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(password.isEmpty()){
+                    Toast.makeText(LoginActivity.this, "Password cannot be empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                pbSignup.setVisibility(ProgressBar.VISIBLE);
+                signupUser(username, password);
             }
         });
     }
@@ -56,6 +81,25 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 goTimelineActivity();
                 Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void signupUser(String username, String password){
+        Log.i(TAG, "Attempting to signup user " + username);
+        ParseUser user = new ParseUser();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e != null){
+                    Log.e(TAG, "Issue with signup user " + e);
+                    return;
+                }
+                ParseUser.logOut();
+                pbSignup.setVisibility(ProgressBar.INVISIBLE);
+                Toast.makeText(LoginActivity.this, "Account created successfully!", Toast.LENGTH_SHORT).show();
             }
         });
     }
