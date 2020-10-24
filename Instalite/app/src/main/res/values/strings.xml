@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Instalite</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign up</string>
+    <string name="take_a_picture">Take a Picture</string>
+    <string name="Post">Post</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_description">Description</string>
+</resources>
