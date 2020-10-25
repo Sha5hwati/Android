@@ -6,7 +6,4 @@
     <item
         android:state_checked="false"
         android:drawable="@drawable/instagram_home_outline_24" />
-    <item
-        android:state_enabled="true"
-        android:drawable="@drawable/button_enabled" />
 </selector>
