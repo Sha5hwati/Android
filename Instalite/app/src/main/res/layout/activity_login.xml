@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:text="@string/signup"
         android:textColor="#FFFFFF"
-        android:background="#5BC236"
+        android:background="@color/signup"
         android:layout_marginTop="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

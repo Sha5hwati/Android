@@ -42,6 +42,16 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.PostHolder> {
         holder.bind(post);
     }
 
+    public void clear() {
+        posts.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addAll(List<Post> list) {
+        posts.addAll(list);
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return posts.size();

@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +33,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<Post> postList;
     private HomeAdapter homeAdapter;
+    private SwipeRefreshLayout swipeContainer;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -53,6 +55,18 @@ public class HomeFragment extends Fragment {
         homeAdapter = new HomeAdapter(getContext(), postList);
         recyclerView.setAdapter(homeAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                queryPosts();
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(R.color.buttons,
+                android.R.color.holo_red_light,
+                R.color.signup);
+
         queryPosts();
     }
 
@@ -66,8 +80,9 @@ public class HomeFragment extends Fragment {
                     Log.e(TAG, "Issue with getting posts " + e);
                     return;
                 }
-                postList.addAll(posts);
-                homeAdapter.notifyDataSetChanged();
+                homeAdapter.clear();
+                homeAdapter.addAll(posts);
+                swipeContainer.setRefreshing(false);
                 for(Post post : posts){
                     Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
                 }
