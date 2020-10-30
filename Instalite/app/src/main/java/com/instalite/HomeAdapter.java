@@ -17,6 +17,8 @@ import com.instalite.Post;
 import com.instalite.R;
 import com.parse.ParseFile;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.PostHolder> {
@@ -64,6 +66,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.PostHolder> {
         ImageView image;
         ImageView profilePic;
         TextView description;
+        TextView createdAt;
 
         public PostHolder(@NonNull View itemView) {
             super(itemView);
@@ -72,15 +75,18 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.PostHolder> {
             description = itemView.findViewById(R.id.description);
             image = itemView.findViewById(R.id.post_image);
             profilePic = itemView.findViewById(R.id.profilePic);
+            createdAt = itemView.findViewById(R.id.creationTime);
         }
 
         public void bind(Post post){
             username.setText(post.getUser().getUsername());
             username2.setText(post.getUser().getUsername());
             description.setText(post.getDescription());
+            String timeStamp = TimeFormatter.getTimeDifference(post.getCreated().toString());
+            createdAt.setText(timeStamp + " ago");
 
             GlideApp.with(context).load(post.getImage().getUrl()).into(image);
-            ParseFile file = (ParseFile) post.getUser().get("ProfilePic");
+            ParseFile file = (ParseFile) post.getUser().get("profilePicture");
             if(file == null){
                 GlideApp.with(context).load(R.drawable.select_profile_icon).transform(new CircleCrop()).into(profilePic);
             }
